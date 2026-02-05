@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import TodoItem from "./components/TodoItem";
 
 function App() {
   const [task, setTask] = useState("");
@@ -57,21 +58,12 @@ function App() {
       </div>
 
       {todos.map((todo) => (
-        <div key={todo.id} className="todo">
-          <span
-            onClick={() => toggleComplete(todo.id)}
-            style={{
-              textDecoration: todo.completed ? "line-through" : "none",
-              cursor: "pointer",
-              marginRight: 10,
-            }}
-          >
-            {todo.text}
-          </span>
-          <button className="delete-btn" onClick={() => deleteTodo(todo.id)}>
-            Delete
-          </button>
-        </div>
+        <TodoItem 
+        key={todo.id}
+        todo={todo}
+        toggleComplete={toggleComplete}
+        deleteTodo={deleteTodo}
+        />
       ))}
     </div>
   );
