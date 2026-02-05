@@ -40,22 +40,24 @@ function App() {
   };
 
   return (
-    <div style={{ padding: 20 }}>
+    <div className="container">
       <h1>Smart Todo App</h1>
 
-      <input
-        type="text"
-        placeholder="Enter Task..."
-        value={task}
-        onChange={(e) => setTask(e.target.value)}
-      />
+      <div className="input-group">
+        <input
+          type="text"
+          placeholder="Enter Task..."
+          value={task}
+          onChange={(e) => setTask(e.target.value)}
+        />
 
-      <button style={{ margin: 10 }} onClick={addTodo}>
-        Add
-      </button>
+        <button style={{ margin: 10 }} onClick={addTodo}>
+          Add Todo
+        </button>
+      </div>
 
       {todos.map((todo) => (
-        <div key={todo.id}>
+        <div key={todo.id} className="todo">
           <span
             onClick={() => toggleComplete(todo.id)}
             style={{
@@ -66,7 +68,9 @@ function App() {
           >
             {todo.text}
           </span>
-          <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+          <button className="delete-btn" onClick={() => deleteTodo(todo.id)}>
+            Delete
+          </button>
         </div>
       ))}
     </div>
