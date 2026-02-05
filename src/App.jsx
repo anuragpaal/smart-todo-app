@@ -9,7 +9,8 @@ function App() {
 
     const newTodo = {
         id: Date.now(),
-        text: task
+        text: task,
+        completed: false
     };
 
     setTodos([...todos, newTodo]);
@@ -19,6 +20,16 @@ function App() {
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
+
+  const toggleComplete = (id) => {
+    setTodos(
+        todos.map(todo =>
+            todo.id === id
+            ? {...todo, completed : !todo.completed}
+            : todo
+        )
+    );
+  }
 
   return (
     <div style={{ padding: 20 }}>
@@ -35,7 +46,15 @@ function App() {
 
       {todos.map((todo) => (
         <div key={todo.id}>
-          <span>{todo.text}</span>
+          <span onClick={() => toggleComplete(todo.id)}
+            style={{
+                textDecoration : todo.completed
+                ? "line-through"
+                : "none",
+                cursor : "pointer",
+                marginRight : 10
+            }}
+            >{todo.text}</span>
           <button onClick={() => deleteTodo(todo.id)}>Delete</button>
         </div>
       ))}
