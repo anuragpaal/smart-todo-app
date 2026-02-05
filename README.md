@@ -20,7 +20,7 @@ npm install
 npm run dev
 
 ## Live Demo
-(Add after deployment)
+https://smart-todo-app-sigma.vercel.app
 
 ---
 
